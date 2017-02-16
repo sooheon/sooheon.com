@@ -32,8 +32,8 @@
                              uuid)]
     (spit filepath front-matter)))
 
-(defn published-post? [{:keys [parent-path]}]
-  (= parent-path "posts/"))
+(defn published-post? [{:keys [path]}]
+  (.startsWith path "public/posts/"))
 
 (defn slug-fn [_ m]
   "Parses `slug` portion out of the filename in the format: slug-title.ext"
@@ -42,13 +42,6 @@
        (string/join "-")
        string/lower-case))
 
-(defn permalink-fn [_ {:keys [date-published slug]}]
-  (let [date (string/split (layout/iso-date-fmt date-published) #"-")
-        year (first date)
-        month (second date)]
-    #_(str "/" year "/" month "/" slug ".html")
-    (str "/" slug ".html")))
-
 (deftask build
   "Build sooheon.com"
   [i include-drafts bool "Include drafts?"]
@@ -56,7 +49,7 @@
    (p/global-metadata)
    (p/markdown :md-exts {:smartypants true})
    (p/slug :slug-fn slug-fn)
-   (p/permalink :permalink-fn permalink-fn)
+   (p/permalink)
    (p/collection :renderer 'site.layout/index-page :filterer published-post?)
    (p/render :renderer 'site.layout/post-page :filterer published-post?)
    (p/atom-feed :filterer published-post?)

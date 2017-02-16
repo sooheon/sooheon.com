@@ -26,17 +26,17 @@
    [:a {:href "/atom.xml"} "Subscribe"] " * "
    [:a {:href "mailto:tngjs0@gmail.com"} "Conversation"]])
 
-(defn other-posts [entry entries]
-  (let [other-entries (->> entries
-                           (remove #(= entry %))
-                           (sort-by :date-published)
-                           reverse)]
-    (when (not-empty other-entries)
+(defn recent-posts [entry entries]
+  (let [recent-entries (->> entries
+                            (sort-by :date-published)
+                            reverse
+                            (take 5))]
+    (when (not-empty entries)
       [:div.mb5
        [:h2 "Recent Posts"]
        (into
         [:ol.list-reset]
-        (for [post other-entries]
+        (for [post recent-entries]
           [:li
            [:a {:href (:permalink post)} (:title post)]
            [:code.ml1 (month-fmt (:date-published post))]]))])))
@@ -48,7 +48,7 @@
     [:div.grey.mono "Published: " (iso-date-fmt (:date-published entry))]
     (:content entry)]
    (common/disqus entry)
-   (other-posts entry entries)])
+   (recent-posts entry entries)])
 
 (defn base [content]
   (hp/html5

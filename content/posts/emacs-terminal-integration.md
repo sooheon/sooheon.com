@@ -2,7 +2,9 @@
 title: Emacs and iTerm Integration
 date-published: 2017-02-15
 uuid: 568D1B57-555F-45CB-B19D-4374BEDC680E
-tags: emacs, development
+tags:
+ - emacs
+ - development
 ---
 
 The rationale for using graphical Emacs and iTerm together is as follows:

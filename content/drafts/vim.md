@@ -1,6 +1,5 @@
 ---
 title: Vim
-draft: true
 ---
 
 Vim was my third language, after Korean and English and before any actual
