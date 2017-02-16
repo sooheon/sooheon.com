@@ -2,6 +2,7 @@ html {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    height: 100%;
 }
 
 *, *:before, *:after {
@@ -11,7 +12,10 @@ html {
 }
 
 body {
+    position: relative;
     margin: 0;
+    min-height: 100%;
+    padding-bottom: 6rem;
 }
 
 header {
@@ -50,6 +54,10 @@ footer {
     color: white;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 footer a {
