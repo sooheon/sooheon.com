@@ -55,19 +55,25 @@
    (p/permalink)
    (p/collection :renderer 'site.layout/index-page :filterer published-post?)
    (p/render :renderer 'site.layout/post-page :filterer published-post?)
+   (p/static :renderer 'site.layout/about-page :page "about.html")
    (p/atom-feed :filterer published-post?)
    (p/rss :filterer published-post?)
    (p/sitemap :filterer #(not= (:slug %) "404"))))
+
+(deftask repl-dev
+  "For use from within a repl, in order to make reloading build.boot possible"
+  []
+  (comp
+   (watch)
+   (build)
+   (target)))
 
 (deftask dev
   "Build sooheon.com for local development"
   []
   (comp
-   (serve :resource-root "public" :port 4000)
-   (watch)
-   (build)
-   (target)
-   (p/print-meta)
+   (serve :resource-root "public")
+   (repl-dev)
    (livereload :asset-path "public")))
 
 (deftask deploy
