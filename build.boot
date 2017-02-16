@@ -20,12 +20,12 @@
  pom {:project 'sooheon.com
       :version "0.1.0"})
 
-(deftask draft
+(deftask new
   "Creates a new post with frontmatter and uuid"
   [n filename FILENAME str "Filename of new post"]
   (let [uuid (java.util.UUID/randomUUID)
         filepath (format "content/drafts/%s" filename)
-        front-matter (format "---\ntitle: %s \nuuid: %s\ndate-published: \n---\n"
+        front-matter (format "---\ntitle: %s \nuuid: %s\ndraft: true\ndate-published: \n---\n"
                              (-> (string/split filename #"\.")
                                  first
                                  (string/replace #"-" " "))
@@ -48,6 +48,7 @@
   (comp
    (p/global-metadata)
    (p/markdown :md-exts {:smartypants true})
+   (p/draft)
    (p/slug :slug-fn slug-fn)
    (p/permalink)
    (p/collection :renderer 'site.layout/index-page :filterer published-post?)
