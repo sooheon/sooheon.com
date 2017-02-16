@@ -56,7 +56,6 @@
    (p/collection :renderer 'site.layout/index-page :filterer published-post?)
    (p/render :renderer 'site.layout/post-page :filterer published-post?)
    (p/static :renderer 'site.layout/about-page :page "about.html")
-   (p/atom-feed :filterer published-post?)
    (p/rss :filterer published-post?)
    (p/sitemap :filterer #(not= (:slug %) "404"))))
 

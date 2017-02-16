@@ -23,7 +23,7 @@
 (def footer
   [:footer.mono
    [:a {:href "/about.html"} "About"] " * "
-   [:a {:href "/atom.xml"} "Subscribe"] " * "
+   [:a {:href "/feed.rss"} "Subscribe"] " * "
    [:a {:href "mailto:tngjs0@gmail.com"} "Conversation"]])
 
 (defn recent-posts [entry entries]
