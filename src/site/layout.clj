@@ -26,28 +26,31 @@
    [:a {:href "/atom.xml"} "Subscribe"] " * "
    [:a {:href "mailto:tngjs0@gmail.com"} "Conversation"]])
 
-(defn main [entry entries]
+(defn other-posts [entry entries]
   (let [other-entries (->> entries
                            (remove #(= entry %))
                            (sort-by :date-published)
                            reverse)]
-    [:main
-     [:article
-      [:h1.h1 (:title entry)]
-      [:div.grey.mono "Published: " (iso-date-fmt (:date-published entry))]
-      (:content entry)]
-     (common/disqus entry)
-     (when (not-empty other-entries)
-       [:div.mb5
-        [:h2 "Recent Posts"]
-        (into
-         [:ol.list-reset]
-         (for [post other-entries]
-           [:li
-            [:a {:href (:permalink post)} (:title post)]
-            [:code.ml1 (month-fmt (:date-published post))]]))])]))
+    (when (not-empty other-entries)
+      [:div.mb5
+       [:h2 "Recent Posts"]
+       (into
+        [:ol.list-reset]
+        (for [post other-entries]
+          [:li
+           [:a {:href (:permalink post)} (:title post)]
+           [:code.ml1 (month-fmt (:date-published post))]]))])))
 
-(defn body [content]
+(defn main [entry entries]
+  [:main
+   [:article
+    [:h1.h1 (:title entry)]
+    [:div.grey.mono "Published: " (iso-date-fmt (:date-published entry))]
+    (:content entry)]
+   (common/disqus entry)
+   (other-posts entry entries)])
+
+(defn base [content]
   (hp/html5
    {:lang "en"}
    (common/head {})
@@ -57,9 +60,9 @@
     footer]))
 
 (defn index-page [{:keys [entries]}]
-  (body (main (first entries) entries)))
+  (base (main (first entries) entries)))
 
 (defn post-page [{:keys [entry entries]}]
-  (body (main entry entries)))
+  (base (main entry entries)))
 
 (defn about-page [])

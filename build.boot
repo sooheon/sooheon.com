@@ -4,7 +4,7 @@
  :dependencies '[[org.clojure/tools.nrepl "0.2.12" :exclusions [org.clojure/clojure]]
                  [pandeiro/boot-http "0.7.6" :exclusions [org.clojure/clojure]]
                  [deraen/boot-livereload "0.2.0"]
-                 [perun "0.4.1-SNAPSHOT"]
+                 [perun "0.4.2-SNAPSHOT"]
                  [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
                  [clj-time "0.13.0"]])
 
@@ -32,17 +32,17 @@
                              uuid)]
     (spit filepath front-matter)))
 
-(defn published-post? [{:keys [path]}]
-  (.startsWith path "posts/"))
+(defn published-post? [{:keys [parent-path]}]
+  (= parent-path "posts/"))
 
-(defn slug-fn [filename]
+(defn slug-fn [_ m]
   "Parses `slug` portion out of the filename in the format: slug-title.ext"
-  (->> (string/split filename #"[-\.]")
+  (->> (string/split (:filename m) #"[-\.]")
        drop-last
        (string/join "-")
        string/lower-case))
 
-(defn permalink-fn [{:keys [date-published slug]}]
+(defn permalink-fn [_ {:keys [date-published slug]}]
   (let [date (string/split (layout/iso-date-fmt date-published) #"-")
         year (first date)
         month (second date)]
@@ -54,10 +54,9 @@
   [i include-drafts bool "Include drafts?"]
   (comp
    (p/global-metadata)
-   (p/markdown :options {:extensions {:smartypants true}})
+   (p/markdown :md-exts {:smartypants true})
    (p/slug :slug-fn slug-fn)
    (p/permalink :permalink-fn permalink-fn)
-   (p/canonical-url)
    (p/collection :renderer 'site.layout/index-page :filterer published-post?)
    (p/render :renderer 'site.layout/post-page :filterer published-post?)
    (p/atom-feed :filterer published-post?)
