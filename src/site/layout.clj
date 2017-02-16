@@ -28,9 +28,9 @@
 
 (defn main [entry entries]
   (let [other-entries (->> entries
-                     (remove #(= entry %))
-                     (sort-by :date-published)
-                     reverse)]
+                           (remove #(= entry %))
+                           (sort-by :date-published)
+                           reverse)]
     [:main
      [:article
       [:h1.h1 (:title entry)]
