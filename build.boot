@@ -35,6 +35,9 @@
 (defn published-post? [{:keys [path]}]
   (.startsWith path "public/posts/"))
 
+(defn not-draft? [{:keys [path]}]
+  (not (.startsWith path "drafts/")))
+
 (defn slug-fn [_ m]
   "Parses `slug` portion out of the filename in the format: slug-title.ext"
   (->> (string/split (:filename m) #"[-\.]")
@@ -47,8 +50,7 @@
   [i include-drafts bool "Include drafts?"]
   (comp
    (p/global-metadata)
-   (p/markdown :md-exts {:smartypants true})
-   (p/draft)
+   (p/markdown :md-exts {:smartypants true} :filterer not-draft?)
    (p/slug :slug-fn slug-fn)
    (p/permalink)
    (p/collection :renderer 'site.layout/index-page :filterer published-post?)
@@ -64,7 +66,8 @@
    (serve :resource-root "public" :port 4000)
    (watch)
    (build)
-   #_(p/print-meta)
+   (target)
+   (p/print-meta)
    (livereload :asset-path "public")))
 
 (deftask deploy
