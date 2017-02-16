@@ -23,7 +23,7 @@
 (defn disqus [post]
   [:div.mt4.mb4
    [:div {:id "disqus_thread"}]
-   [:script (format "
+   [:script {:async true :defer true} (format "
 var disqus_config = function () {
 this.page.url = '%s';
 this.page.identifier = '%s';
