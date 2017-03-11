@@ -2,9 +2,6 @@
   (:require [hiccup.page :as hp]
             [hiccup.core :as hiccup]))
 
-(defn google-analytics []
-  [:script {:type "text/javascript"}])
-
 (defn head
   [{:keys [title]}]
   [:head

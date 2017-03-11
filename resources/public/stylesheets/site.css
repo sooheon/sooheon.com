@@ -145,9 +145,9 @@ div.table-wrapper {
 }
 
 code {
-    font-family: Courier, monospace;
-    font-size: 0.85em;
-    line-height: 1.42;
+    font-family: SF Mono, Courier, monospace;
+    font-size: 0.8em;
+    line-height: 1.3;
 }
 
 pre code {
