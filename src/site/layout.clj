@@ -18,7 +18,8 @@
 (def header
   [:header.mono
    [:div.title [:a {:href "/"} "****"]]
-   [:div.subtitle "a blog about looking back, pillars of salt, &c."]])
+   ;; [:div.subtitle "a blog about looking back, pillars of salt, &c."]
+   ])
 
 (def footer
   [:footer.mono
@@ -44,6 +45,7 @@
 (defn main [entry entries]
   [:main
    [:article
+    [:br]
     [:h1.h1 (:title entry)]
     [:div.grey.mono "Published: " (iso-date-fmt (:date-published entry))]
     (:content entry)]
