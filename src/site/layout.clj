@@ -18,8 +18,7 @@
 (def header
   [:header.mono
    [:div.title [:a {:href "/"} "****"]]
-   ;; [:div.subtitle "a blog about looking back, pillars of salt, &c."]
-   ])
+   [:div.subtitle "The blog of Sooheon Kim"]])
 
 (def footer
   [:footer.mono
@@ -45,11 +44,10 @@
 (defn main [entry entries]
   [:main
    [:article
-    [:br]
     [:h1.h1 (:title entry)]
     [:div.grey.mono "Published: " (iso-date-fmt (:date-published entry))]
     (:content entry)]
-   (common/disqus entry)
+   ;; (common/disqus entry)
    (recent-posts entry entries)])
 
 (defn base [content]
@@ -71,12 +69,12 @@
   (base
    [:main
     [:h1 "About"]
-    [:p "My name is 김수헌, written in English as Kim Sooheon, first name
-pronounced Sue Hun. That made me at one time a boy named Sue and Hon(ey)."]
+    [:p "My name is 김수헌, written in English as Kim Sooheon, pronounced \"Sue
+    Hun\"."]
     [:p "After finding myself toiling over yet another long-winded response to a
-random stranger online, I decided I might as well collect my thoughts in one
-place, hence the blog. Enjoy, and don't hesitate to hit me up by email if
-there's anything at all you want to discuss."]
+    random stranger online, I decided I might as well collect my thoughts in one
+    place, hence the blog. Enjoy, and don't hesitate to hit me up by email if
+    there's anything at all you want to discuss."]
     [:p "I enjoy coding Clojure, yak-shaving with Emacs, some armchair
-philosophy, and generally looking to find reasonable beliefs in a complex
-world."]]))
+    philosophy, and generally looking for reasonable beliefs to hold about a
+    complex world."]]))

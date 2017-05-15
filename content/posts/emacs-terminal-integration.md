@@ -123,28 +123,20 @@ and I have everything I need for seamless integration.
 <img src="/images/content/emacs-iterm-workflow.png" alt="My Emacs-iTerm workflow">
 </figure>
 
-I can hear the "tsk tsk"s from all sides at this chimera of a workflow. The
-Vim/tmux folk will grumble something about "context switching" and "UNIX
-philosophy" on their way back to their terminal paradise, and the true grizzled
-Emacs veterans will remind me of the one true way: that all things must be
-subsumed into Emacs.
-
-They all have a point, but the biggest reason that all of this works for me is
-that this acknowledges that the ⌘ key exists on my Mac. I was never happy
-with rebinding it to `Meta` in Emacs, or generally ignoring its existence inside
-terminals. With my setup, there is a very nice symmetry between selecting tabs
-in Chrome with ⌘+Number, and selecting a pane/window in iTerm/Emacs with the
-same. In both Emacs and iTerm, I move around splits with ⌘-hjkl, and in
-Emacs I can use all the normal ⌘ based CUA keys. Best of all, since the
-⌘ modifier has firm responsibility over all inter- and intra-app navigation
-in my mind, the ⌃ and `Meta` keyspaces can be fully dedicated to
-editing.<label for="sn-demo" class="margin-toggle
-sidenote-number"></label>
-<input type="checkbox" id="sn-demo" class="margin-toggle"/>
-<span class="sidenote">For example, [vim-tmux-navigator][3] uses `⌃-hjkl`,
-but all four of those keybindings are useful in Emacs; most `Meta` bindings are
-similarly important. Using the tmux prefix key every time is not even worth
-considering.</span>
+The biggest reason that all of this works for me is that this acknowledges that
+the ⌘ key exists on my Mac. I was never happy with rebinding it to `Meta` in
+Emacs, or generally ignoring its existence inside terminals. With my setup,
+there is a very nice symmetry between selecting tabs in Chrome with ⌘+Number,
+and selecting a pane/window in iTerm/Emacs with the same. In both Emacs and
+iTerm, I move around splits with ⌘-hjkl, and in Emacs I can use all the normal ⌘
+based CUA keys. Best of all, since the ⌘ modifier has firm responsibility over
+all inter- and intra-app navigation in my mind, the ⌃ and `Meta` keyspaces can
+be fully dedicated to editing.<label for="sn-demo" class="margin-toggle
+sidenote-number"></label> <input type="checkbox" id="sn-demo"
+class="margin-toggle"/> <span class="sidenote">For
+example, [vim-tmux-navigator][3] uses `⌃-hjkl`, but all four of those
+keybindings are useful in Emacs; most `Meta` bindings are similarly important.
+Using the tmux prefix key every time is not even worth considering.</span>
 
 [1]: https://bitbucket.org/mituharu/emacs-mac/overview
 [2]: https://www.iterm2.com
