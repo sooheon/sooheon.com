@@ -1,8 +1,6 @@
 (ns site.layout
   (:require [site.common :as common]
-            [boot.util :as util]
             [hiccup.page :as hp]
-            [clj-time.core :as tc]
             [clj-time.coerce :as to]
             [clj-time.format :as tf]))
 
@@ -18,7 +16,7 @@
 (def header
   [:header.mono
    [:div.title [:a {:href "/"} "****"]]
-   [:div.subtitle "The blog of Sooheon Kim"]])
+   [:div.subtitle "Things I've done and thought about"]])
 
 (def footer
   [:footer.mono
@@ -28,6 +26,7 @@
 
 (defn recent-posts [entry entries]
   (let [recent-entries (->> entries
+                            (filter :date-published)
                             (sort-by :date-published)
                             reverse
                             (take 5))]
@@ -39,34 +38,45 @@
         (for [post recent-entries]
           [:li
            [:a {:href (:permalink post)} (:title post)]
-           [:code.ml1 (month-fmt (:date-published post))]]))])))
+           [:code.ml1 (when-let [date (:date-published post)]
+                        (month-fmt date))]]))])))
 
-(defn main [entry entries]
-  [:main
-   [:article
-    [:h1.h1 (:title entry)]
-    [:div.grey.mono "Published: " (iso-date-fmt (:date-published entry))]
-    (:content entry)]
-   ;; (common/disqus entry)
-   (recent-posts entry entries)])
-
-(defn base [content]
+(defn layout [content]
   (hp/html5
    {:lang "en"}
    (common/head {})
    [:body
     header
-    content
+    [:div.content.mx-auto
+     [:div.clearfix content]]
     footer]))
 
-(defn index-page [{:keys [entries]}]
-  (base (main (first entries) entries)))
+(defn index-page [{:keys [entries] :as data}]
+  (layout
+   [:div
+    [:h2 "Contents"]
+    [:ul
+     (doall (map (fn [{:keys [draft title permalink date-published] :as entry}]
+                   [:li
+                    [:a {:href permalink} title]
+                    " "
+                    (if draft
+                      [:span.grey.mono "(draft)"]
+                      [:span.grey.mono "(" (iso-date-fmt date-published) ")"])])
+                 entries))]]))
 
 (defn post-page [{:keys [entry entries]}]
-  (base (main entry entries)))
+  (layout [:main
+           [:article
+            [:h1.h1 (:title entry)]
+            [:div.grey.mono "Published: " (iso-date-fmt (:date-published entry))]
+            (:content entry)]
+           ;; (common/disqus entry)
+           ;; (recent-posts entry entries)
+           ]))
 
 (defn about-page [{:keys [meta entry]}]
-  (base
+  (layout
    [:main
     [:h1 "About"]
     [:p "My name is 김수헌, written in English as Kim Sooheon, pronounced \"Sue

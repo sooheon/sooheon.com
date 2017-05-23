@@ -1,10 +1,11 @@
 (set-env!
  :source-paths #{"src" "content"}
  :resource-paths #{"resources"}
- :dependencies '[[org.clojure/tools.nrepl "0.2.12" :exclusions [org.clojure/clojure]]
-                 [pandeiro/boot-http "0.7.6" :exclusions [org.clojure/clojure]]
+ :dependencies '[[org.clojure/tools.nrepl "0.2.13" :exclusions [org.clojure/clojure]]
+                 [pandeiro/boot-http "0.8.3" :exclusions [org.clojure/clojure]]
                  [deraen/boot-livereload "0.2.0"]
                  [perun "0.4.2-SNAPSHOT"]
+                 [confetti/confetti "0.1.5"]
                  [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
                  [clj-time "0.13.0"]])
 
@@ -13,11 +14,13 @@
          '[deraen.boot-livereload :refer [livereload]]
          '[io.perun :as p]
          '[io.perun.core :as perun]
+         '[io.perun.meta :as pm]
          '[site.layout :as layout]
-         '[clojure.string :as string])
+         '[clojure.string :as string]
+         '[confetti.boot-confetti :refer [sync-bucket]])
 
 (task-options!
- pom {:project 'sooheon.com
+ pom {:project 'sooheon.org
       :version "0.1.0"})
 
 (deftask new
@@ -32,12 +35,6 @@
                              uuid)]
     (spit filepath front-matter)))
 
-(defn published-post? [{:keys [path]}]
-  (.startsWith path "public/posts/"))
-
-(defn not-draft? [{:keys [path]}]
-  (not (.startsWith path "drafts/")))
-
 (defn slug-fn [_ m]
   "Parses `slug` portion out of the filename in the format: slug-title.ext"
   (->> (string/split (:filename m) #"[-\.]")
@@ -45,39 +42,41 @@
        (string/join "-")
        string/lower-case))
 
+(defn published? [{:keys [date-published]}]
+  date-published)
+
 (deftask build
-  "Build sooheon.com"
+  "Build sooheon.org"
   [i include-drafts bool "Include drafts?"]
   (comp
    (p/global-metadata)
-   (p/markdown :md-exts {:smartypants true} :filterer not-draft?)
+   (p/markdown :md-exts {:smartypants true})
+   (if include-drafts identity (p/draft))
    (p/slug :slug-fn slug-fn)
    (p/permalink)
-   (p/collection :renderer 'site.layout/index-page :filterer published-post?)
-   (p/render :renderer 'site.layout/post-page :filterer published-post?)
+   (p/render :renderer 'site.layout/post-page)
+   (p/collection :renderer 'site.layout/index-page :page "index.html")
    (p/static :renderer 'site.layout/about-page :page "about.html")
-   (p/rss :filterer published-post?)
+   (p/rss)
    (p/sitemap :filterer #(not= (:slug %) "404"))))
 
-(deftask repl-dev
-  "For use from within a repl, in order to make reloading build.boot possible"
-  []
-  (comp
-   (watch)
-   (build)
-   (target)))
-
 (deftask dev
-  "Build sooheon.com for local development"
-  []
+  "Build sooheon.org for local development"
+  [e exclude-drafts bool "Drafts are included by default. Exclude drafts?"]
   (comp
    (serve :resource-root "public")
-   (repl-dev)
+   (watch)
+   (build :include-drafts (not exclude-drafts))
+   (target)
    (livereload :asset-path "public")))
 
 (deftask deploy
-  "Build with Google Analytics script injected and output to target"
+  "Publish to S3 using confetti. Requires a confetti.edn file in directory
+  root."
   []
+  (task-options! build {:include-drafts false})
   (comp (build)
         (p/inject-scripts :scripts #{"ga-inject.js"})
-        (target)))
+        (sift :include #{#"^public/"})
+        (sift :move {#"^public/" ""})
+        (sync-bucket :confetti-edn "sooheon-org.confetti.edn")))

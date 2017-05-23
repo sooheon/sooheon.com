@@ -116,12 +116,7 @@ and I have everything I need for seamless integration.
 
 ## The Result
 
-<figure>
-<label for="mn-pic" class="margin-toggle">※</label>
-<input type="checkbox" id="mn-pic" class="margin-toggle">
-<span class="marginnote">My Emacs-iTerm workflow.</span>
 <img src="/images/content/emacs-iterm-workflow.png" alt="My Emacs-iTerm workflow">
-</figure>
 
 The biggest reason that all of this works for me is that this acknowledges that
 the ⌘ key exists on my Mac. I was never happy with rebinding it to `Meta` in
@@ -131,12 +126,10 @@ and selecting a pane/window in iTerm/Emacs with the same. In both Emacs and
 iTerm, I move around splits with ⌘-hjkl, and in Emacs I can use all the normal ⌘
 based CUA keys. Best of all, since the ⌘ modifier has firm responsibility over
 all inter- and intra-app navigation in my mind, the ⌃ and `Meta` keyspaces can
-be fully dedicated to editing.<label for="sn-demo" class="margin-toggle
-sidenote-number"></label> <input type="checkbox" id="sn-demo"
-class="margin-toggle"/> <span class="sidenote">For
-example, [vim-tmux-navigator][3] uses `⌃-hjkl`, but all four of those
-keybindings are useful in Emacs; most `Meta` bindings are similarly important.
-Using the tmux prefix key every time is not even worth considering.</span>
+be fully dedicated to editing. For example, [vim-tmux-navigator][3] uses
+`⌃-hjkl`, but all four of those keybindings are useful in Emacs; most `Meta`
+bindings are similarly important. Using the tmux prefix key every time is not
+even worth considering.
 
 [1]: https://bitbucket.org/mituharu/emacs-mac/overview
 [2]: https://www.iterm2.com
