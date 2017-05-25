@@ -95,7 +95,7 @@ it will activate iTerm and cd to the current directory. I have it bound to
 also recommend binding `reveal-in-osx-finder`, a package available from MELPA,
 to `gof`.
 
-```emacs-lisp
+```lisp
 ;;;###autoload
 (defun soo-terminal-pop ()
   "If iTerm is not open, launch it. If iTerm session is busy, split

@@ -1,5 +1,5 @@
 ---
-title: Deconstructing Agglutinated Korean Text in Clojure
+title: Hangul-utils, a Clojure Tool for Deconstructing Korean Syllables 
 uuid: 8FD045F0-DB70-44BD-A4DD-23B02076E953
 date-published: 2017-05-15
 tags:

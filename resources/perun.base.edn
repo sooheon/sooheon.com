@@ -1,5 +1,5 @@
 {:base-url "http://www.sooheon.org/"
- :site-title "Sooheon Kim's Blog"
+ :site-title "(dissoc mind :thoughts)"
  :author "Sooheon Kim"
  :author-email "tngjs0@gmail.com"
  :description "Recorded Thoughts"}

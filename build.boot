@@ -1,5 +1,5 @@
 (set-env!
- :source-paths #{"src" "content"}
+ :source-paths #{"src" "content/drafts" "content/posts"}
  :resource-paths #{"resources"}
  :dependencies '[[org.clojure/tools.nrepl "0.2.13" :exclusions [org.clojure/clojure]]
                  [pandeiro/boot-http "0.8.3" :exclusions [org.clojure/clojure]]
@@ -10,12 +10,11 @@
                  [clj-time "0.13.0"]])
 
 (require '[pandeiro.boot-http :refer [serve]]
-         '[boot.util :as util]
          '[deraen.boot-livereload :refer [livereload]]
          '[io.perun :as p]
          '[io.perun.core :as perun]
          '[io.perun.meta :as pm]
-         '[site.layout :as layout]
+         '[site.util :as util]
          '[clojure.string :as string]
          '[confetti.boot-confetti :refer [sync-bucket]])
 
@@ -35,15 +34,28 @@
                              uuid)]
     (spit filepath front-matter)))
 
-(defn slug-fn [_ m]
-  "Parses `slug` portion out of the filename in the format: slug-title.ext"
-  (->> (string/split (:filename m) #"[-\.]")
-       drop-last
-       (string/join "-")
-       string/lower-case))
+(defn slug-fn [_ {:keys [date-published filename]}]
+  "Parses a filename into a url slug. If the file is a published post, the year and month
+  are prepended to the path:
 
-(defn published? [{:keys [date-published]}]
-  date-published)
+  *base-url*/2017/05/file-name.html"
+  (let [file-slug (->> (string/split filename #"[-\.]")
+                       drop-last
+                       (string/join "-")
+                       string/lower-case)]
+    (if date-published
+      (str (util/yyyy-MM-fmt date-published) file-slug)
+      file-slug)))
+
+(defn permalink-fn [global-meta {:keys [parent-path slug]}]
+  (-> (str parent-path slug)
+      perun/path-to-url
+      (str ".html")
+      (string/replace (re-pattern (str "^" (:doc-root global-meta))) "")
+      perun/absolutize-url))
+
+(defn filter-2017 [{:keys [permalink]}]
+  (= "2017" (second (string/split permalink #"/"))))
 
 (deftask build
   "Build sooheon.org"
@@ -53,10 +65,13 @@
    (p/markdown :md-exts {:smartypants true})
    (if include-drafts identity (p/draft))
    (p/slug :slug-fn slug-fn)
-   (p/permalink)
-   (p/render :renderer 'site.layout/post-page)
-   (p/collection :renderer 'site.layout/index-page :page "index.html")
-   (p/static :renderer 'site.layout/about-page :page "about.html")
+   (p/permalink :permalink-fn permalink-fn)
+   (p/render :renderer 'site.layout/post)
+   (p/collection :renderer 'site.layout/index :page "index.html")
+   (p/collection :renderer 'site.layout/year-overview
+                 :page "2017/index.html"
+                 :filterer filter-2017)
+   (p/static :renderer 'site.static/about :page "about.html")
    (p/rss)
    (p/sitemap :filterer #(not= (:slug %) "404"))))
 

@@ -1,6 +1,5 @@
 (ns site.common
-  (:require [hiccup.page :as hp]
-            [hiccup.core :as hiccup]))
+  (:require [hiccup.page :as hp]))
 
 (defn head
   [{:keys [title]}]
@@ -32,6 +31,15 @@ s.src = '//sooheon-com.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();"
-                    (:canonical-url post)
-                    (:uuid post))]
+                                              (:canonical-url post)
+                                              (:uuid post))]
    [:noscript "Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\">comments powered by Disqus.</a>"]])
+
+(def header [:header.mono
+             [:div.title [:a {:href "/"} "****"]]
+             [:div.subtitle "(dissoc mind :thoughts)"]])
+
+(def footer [:footer.mono
+             [:a {:href "/about.html"} "About"] " * "
+             [:a {:href "/feed.rss"} "Subscribe"] " * "
+             [:a {:href "mailto:tngjs0@gmail.com"} "Talk to Me"]])
