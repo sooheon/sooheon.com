@@ -5,3 +5,4 @@ draft: true
 date-published: 
 ---
 
+I initially tried to use Netlify's free tier or OS projects. Netlify works by keeping track of branches of a repo you point it to, and running the given build command when it notices pushes onto that branch.

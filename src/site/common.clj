@@ -4,6 +4,7 @@
 (defn head
   [{:keys [title]}]
   [:head
+   [:meta {:name "google-site-verification" :content "eseBEPCF7c-u0FfNjY5n4RXqqwLbmJnm1-yq-irSw6c"}]
    [:meta {:charset "utf-8"}]
    [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
    [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
@@ -14,7 +15,7 @@
    (hp/include-css "/stylesheets/site.css")
    (hp/include-js "/vendor/highlight.js")
    [:script "hljs.initHighlightingOnLoad();"]
-   [:title (if title (str title " | Sooheon") "Sooheon's Blog")]])
+   [:title (if title (str title " | Sooheon") "(dissoc mind :thoughts)")]])
 
 (defn disqus [post]
   [:div.mt4.mb4

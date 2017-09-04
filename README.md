@@ -2,7 +2,8 @@
 
 Clojure, free will, kettlebells, whatever else.
 
-Deploy on Netlify with git push.
+Begin writing a new draft with `boot new-post`. Deploy live to AWS with `boot
+deploy.`
 
 Thanks to makers of [perun](perun.io), and to Paulus
 Esterhazy's [presumably.de](presumably.de) for inspiration/code. CSS is inspired by

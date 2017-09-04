@@ -12,24 +12,24 @@ html {
 }
 
 body {
+    font-family: georgia;
     position: relative;
     margin: 0 auto;
     min-height: 100%;
     padding-bottom: 6rem;
-    color: #333;
+    color: #444;
     font-size: 1.06em;
 }
 
 .content {
-    max-width: 667px;
+    max-width: 670px;
     width: 90%;
-
 }
 
 header {
     width: 100%
     max-width: 1200px;
-    background-color: #222;
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 0.5em;
@@ -42,10 +42,11 @@ header {
 
 .title a {
     color: white;
+    text-decoration: underline;
 }
 
 main {
-    background: #fdfefe;
+    background: #fdfdfd;
     margin-left: auto;
     margin-right: auto;
     /* padding-left: 10%; */
@@ -56,7 +57,7 @@ footer {
     width: 100%;
     margin: 0;
     text-align: center;
-    background-color: #222;
+    background-color: #333;
     color: white;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
@@ -78,7 +79,12 @@ footer a {
 h1,h2,h3,h4,h5 {
     font-family: Helvetica Neue, Helvetica, Sans Serif;
     line-height: 1;
-    margin-top: 2em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+h1 {
+    font-size: 1.7em;
 }
 
 article {
@@ -86,7 +92,8 @@ article {
 }
 
 a {
-    color: black;
+    color: mediumblue;
+    text-decoration: none;
 }
 
 a:hover {
@@ -198,7 +205,7 @@ img {
 
 /* #disqus_thread { width: 58%; } */
 
-/* #disqus_thread a { color: #222; } /\* the Disqus "Comments" underline *\/ */
+/* #disqus_thread a { color: #333; } /\* the Disqus "Comments" underline *\/ */
 
 /* @media (max-width: 1000px) { */
 /*     main { */

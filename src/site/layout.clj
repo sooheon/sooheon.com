@@ -43,10 +43,7 @@
                     (if draft
                       [:span.grey.mono "(draft)"]
                       [:span.grey.mono "(" (util/iso-date-fmt date-published) ")"])])
-                 entries))]
-    [:br]
-    [:hr.rule]
-    [:p "This is the blog of Sooheon Kim"]]))
+                 entries))]]))
 
 (defn post [{:keys [entry entries]}]
   (layout [:main
