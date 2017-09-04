@@ -9,7 +9,8 @@
                  [deraen/boot-livereload "0.2.0"]
                  [perun "0.4.2-SNAPSHOT"]
                  [confetti/confetti "0.2.0"]
-                 [hiccup "1.0.5" :exclusions [org.clojure/clojure]]])
+                 [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
+                 [clj-time "0.13.0"]])
 
 (require '[pandeiro.boot-http :refer [serve]]
          '[deraen.boot-livereload :refer [livereload]]
