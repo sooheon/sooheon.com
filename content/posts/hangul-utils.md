@@ -23,7 +23,9 @@ write my first public
 Clojure [library](https://github.com/sooheon/hangul-utils).
 
 ## How it works
-Korean syllables in unicode follow a simple [formula](https://en.wikipedia.org/wiki/Korean_language_and_computers#Hangul_in_Unicode) based on the code points of constuent *jamo* (letters).
+Korean syllables in unicode follow a simple
+[formula](https://en.wikipedia.org/wiki/Korean_language_and_computers#Hangul_in_Unicode)
+based on the code points of constuent *jamo* (letters).
 
 Rather than immediately outputting a transformed string (say from "안녕하세요"
 to "ㅇㅏㄴㄴㅕㅇㅎㅏㅅㅔㅇㅛ"), the library represents the deconstructed text as

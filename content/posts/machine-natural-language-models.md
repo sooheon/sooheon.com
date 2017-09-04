@@ -26,8 +26,19 @@ times. What are the implications of this, and why would one choose such a
 model?
 
 First, one loses word order, and therefore *most* grammar. Most, not all, because
-some languages assign semantic roles in the word forms themselves.<sup><a
-href="#fn1" id="r1">[1]</a></sup>
+some languages assign semantic roles in the word forms themselves.[^1]
+
+[^1]:- Semantic role assignment by word order:
+        - "The dog booped the cat on the blanket"
+        - "The cat booped the blanket on the dog"
+
+    - Semantic role assignment by word forms (agglutinated suffixes):
+        - "고양이**는** 마당**에서** 강아지**를** 쫓았다"
+        - "마당**에서** 고양이**는** 쫓았다, 강아지**를**"
+
+    Both Korean sentences mean "the cat chased the dog in the yard", because the
+    bolded suffixes, *not* the word orderings, assign the semantic relations.
+
 
 What you get in return is a simplified, compressed representation of the text
 which can still answer one question: "what is this text about?"
@@ -121,22 +132,3 @@ is now being extrapolated to character-level and morpheme-level embeddings.
 <!-- ## Morpheme based representations -->
 
 <!-- ## Character-level representations -->
-
-<hr>
-
-## Footnotes
-
-<section> <p id="fn1"><a href="#r1">[1]</a>
-
-- Semantic role assignment by word order:
-    - "The dog booped the cat on the blanket"
-    - "The cat booped the blanket on the dog"
-
-- Semantic role assignment by word forms (agglutinated suffixes):
-    - "고양이**는** 마당**에서** 강아지**를** 쫓았다"
-    - "마당**에서** 고양이**는** 쫓았다, 강아지**를**"
-
-Both Korean sentences mean "the cat chased the dog in the yard", because the
-bolded suffixes, *not* the word orderings, assign the semantic relations.
-</p>
-</section>

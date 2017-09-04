@@ -70,7 +70,8 @@
   [i include-drafts bool "Include drafts?"]
   (comp
    (p/global-metadata)
-   (p/markdown :md-exts {:smartypants true})
+   ;; (p/markdown :md-exts {:smartypants true})
+   (p/pandoc :cmd-opts ["--smart"])
    (if include-drafts identity (p/draft))
    (p/slug :slug-fn slug-fn)
    (p/permalink :permalink-fn permalink-fn)
