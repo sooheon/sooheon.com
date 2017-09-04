@@ -37,7 +37,9 @@
 (defn index [{:keys [entries]}]
   (layout
    [:article
-    [:h1 "All Posts"]
+    [:p "Welcome to " [:code "(dissoc mind :thoughts)"]
+     ", a blog by me, Sooheon Kim."]
+    [:h1 "Posts"]
     [:ul
      (doall (map (fn [{:keys [draft title permalink date-published] :as entry}]
                    [:li
@@ -46,11 +48,7 @@
                     (if draft
                       [:span.mono "(draft)"]
                       [:span.mono "(" (util/iso-date-fmt date-published) ")"])])
-                 entries))]
-    [:br]
-    [:br]
-    [:p "Welcome to " [:code "(dissoc mind :thoughts)"]
-     ", a blog by me, Sooheon Kim."]]))
+                 entries))]]))
 
 (defn post [{:keys [entry entries]}]
   (layout [:main

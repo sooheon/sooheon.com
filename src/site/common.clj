@@ -17,6 +17,21 @@
    ;; [:script "hljs.initHighlightingOnLoad();"]
    [:title (if title (str title " | Sooheon") "(dissoc mind :thoughts)")]])
 
+(def header [:header.mono
+             [:div#title [:a {:href "/"}
+                          [:span#letter "*"]
+                          [:span#letter "*"]
+                          [:span#letter "*"]
+                          [:span#letter "*"]]]
+             [:div "(dissoc mind :thoughts)"]])
+
+(def footer [:footer.mono
+             [:a {:href "/about.html"} "About"]
+             " * "
+             [:a {:href "/feed.rss"} "RSS Feed"]
+             " * "
+             [:a {:href "mailto:sooheon.k@gmail.com"} "Email"]])
+
 (defn disqus [post]
   [:div.mt4.mb4
    [:div {:id "disqus_thread"}]
@@ -35,18 +50,3 @@ s.setAttribute('data-timestamp', +new Date());
                                               (:canonical-url post)
                                               (:uuid post))]
    [:noscript "Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\">comments powered by Disqus.</a>"]])
-
-(def header [:header.mono
-             [:div#title [:a {:href "/"}
-                          [:span#letter "*"]
-                          [:span#letter "*"]
-                          [:span#letter "*"]
-                          [:span#letter "*"]]]
-             [:div "(dissoc mind :thoughts)"]])
-
-(def footer [:footer.mono
-             [:a {:href "/about.html"} "About"]
-             " * "
-             [:a {:href "/feed.rss"} "Subscribe"]
-             " * "
-             [:a {:href "mailto:tngjs0@gmail.com"} "Email"]])

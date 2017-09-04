@@ -42,11 +42,6 @@ header {
 #title a, footer a {
     color: white;
     text-decoration: none;
-    background-image: none;
-}
-
-#title a:hover {
-    color: #d00;
 }
 
 main {
@@ -96,12 +91,14 @@ article {
 }
 
 a {
-    /* color: #116fff; */
+    color: #116fff;
 }
 
-/* a:hover { */
-/*     color: #e00000; */
-/* } */
+a:hover {
+    background-color: #116fff;
+    color: white;
+    text-decoration: none;
+}
 
 pre {
     margin-left: -1.4em;
