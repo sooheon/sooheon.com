@@ -1,3 +1,7 @@
 target/
 /.nrepl-history
 /.nrepl-port
+/sooheon-org.confetti.edn
+/www-sooheon-org.confetti.edn
+/.idea/compiler.xml
+.idea/*

@@ -31,28 +31,35 @@
      [:div.clearfix content]]
     common/footer]))
 
+(defn welcome []
+  [:p "Welcome to " [:code "(dissoc mind :thoughts)"] ", a blog by Sooheon Kim."])
+
 (defn index [{:keys [entries]}]
   (layout
-   [:div
-    [:h2 "Contents"]
+   [:article
+    [:h1 "All Posts"]
     [:ul
      (doall (map (fn [{:keys [draft title permalink date-published] :as entry}]
                    [:li
                     [:a {:href permalink} title]
                     " "
                     (if draft
-                      [:span.grey.mono "(draft)"]
-                      [:span.grey.mono "(" (util/iso-date-fmt date-published) ")"])])
-                 entries))]]))
+                      [:span.mono "(draft)"]
+                      [:span.mono "(" (util/iso-date-fmt date-published) ")"])])
+                 entries))]
+    [:br]
+    [:br]
+    [:p "Welcome to " [:code "(dissoc mind :thoughts)"]
+     ", a blog by me, Sooheon Kim."]]))
 
 (defn post [{:keys [entry entries]}]
   (layout [:main
            [:article
-            [:h1.h1 (:title entry)]
-            [:div.grey.mono "Published: " (util/iso-date-fmt (:date-published entry))]
-            (:content entry)]
-           ;; (common/disqus entry)
-           (recent-posts entry entries)]))
+            [:div.article-title (:title entry)]
+            [:div [:code "Published: " (util/iso-date-fmt (:date-published entry))]]
+            (:content entry)
+            ;; (common/disqus entry)
+            (recent-posts entry entries)]]))
 
 (defn year-overview [{:keys [entries]}]
   (layout

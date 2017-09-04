@@ -17,39 +17,41 @@ body {
     margin: 0 auto;
     min-height: 100%;
     padding-bottom: 6rem;
-    color: #444;
+    color: #222;
     font-size: 1.06em;
+    background: #fefefe;
 }
 
 .content {
-    max-width: 670px;
-    width: 90%;
+    max-width: 680px;
 }
 
 header {
     width: 100%
     max-width: 1200px;
-    background-color: #333;
+    background-color: #222;
     color: white;
     text-align: center;
     padding: 0.5em;
 }
 
-.title {
-    font-size: 1.1em;
-    margin: 0.1em;
+#title {
+    font-size: 1.4em;
 }
 
-.title a {
+#title a, footer a {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
+    background-image: none;
+}
+
+#title a:hover {
+    color: #d00;
 }
 
 main {
-    background: #fdfdfd;
     margin-left: auto;
     margin-right: auto;
-    /* padding-left: 10%; */
     max-width: 1200px;
 }
 
@@ -57,7 +59,7 @@ footer {
     width: 100%;
     margin: 0;
     text-align: center;
-    background-color: #333;
+    background-color: #222;
     color: white;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
@@ -67,43 +69,59 @@ footer {
     left: 0;
 }
 
-footer a {
-    color: white;
-}
-
 .mono {
     font-family: Courier New;
-    font-size: 0.85em;
+    font-size: .9em;
+}
+
+.article-title {
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 2em;
+    font-weight: 300;
 }
 
 h1,h2,h3,h4,h5 {
-    font-family: Helvetica Neue, Helvetica, Sans Serif;
-    line-height: 1;
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
     margin-top: 1.5em;
     margin-bottom: 1em;
 }
 
-h1 {
-    font-size: 1.7em;
-}
-
 article {
-    line-height: 1.3;
+    line-height: 1.4;
+    padding: 1.5em;
 }
 
 a {
-    color: mediumblue;
-    text-decoration: none;
+    /* color: #116fff; */
 }
 
-a:hover {
-    color: #f00;
+/* a:hover { */
+/*     color: #e00000; */
+/* } */
+
+pre {
+    margin-left: -1.4em;
+    margin-right: -1.4em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background-color: #f3f3f3;
+    padding: 1.5em;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+code {
+    font-size: 1.1em;
 }
 
 /* article ol li p, article ul li p{ width: calc((100% - 2em)*0.58) } */
 
 .grey {
-    color: #666;
+    color: #282828;
 }
 
 /* Sidenotes, margin notes, figures, captions */
@@ -112,148 +130,3 @@ img {
     max-width: 100%;
     width: 100%
 }
-
-/* .sidenote, .marginnote { */
-/*     float: right; */
-/*     clear: right; */
-/*     margin-right: -60%; */
-/*     width: 50%; */
-/*     margin-top: 0; */
-/*     margin-bottom: 0; */
-/*     font-size: 0.9em; */
-/*     line-height: 1.3; */
-/*     vertical-align: baseline; */
-/*     position: relative; */
-/* } */
-
-/* .sidenote-number { */
-/*     counter-increment: sidenote-counter; */
-/* } */
-
-/* .sidenote-number:after, .sidenote:before { */
-/*     content: counter(sidenote-counter) " "; */
-/*     position: relative; */
-/*     vertical-align: baseline; */
-/* } */
-
-/* .sidenote-number:after { */
-/*     content: counter(sidenote-counter); */
-/*     font-size: 0.8em; */
-/*     top: -0.5em; */
-/* } */
-
-/* .sidenote:before { */
-/*     content: counter(sidenote-counter) " "; */
-/*     font-size: 0.8em; */
-/*     top: -0.5em; */
-/* } */
-
-/* blockquote .sidenote, blockquote .marginnote { */
-/*     margin-right: -82%; */
-/*     min-width: 59%; */
-/*     text-align: left; */
-/* } */
-
-/* p, table { width: 58%; } */
-
-/* div.table-wrapper { */
-/*     overflow-x: auto; */
-/* } */
-
-/* code { */
-/*     font-family: SF Mono Light, Courier, monospace; */
-/*     font-size: 0.85em; */
-/*     line-height: 1.3; */
-/* } */
-
-/* pre code { */
-/*     max-width: 58%; */
-/* } */
-
-/* figure { */
-/*     padding: 0; */
-/*     border: 0; */
-/*     margin: 0 0 3em 0; */
-/*     max-width: 58%; */
-/*     -webkit-margin-start: 0; */
-/*     -webkit-margin-end: 0; */
-/*     vertical-align: baseline; */
-/* } */
-
-/* figcaption { float: right; */
-/*              clear: right; */
-/*              margin-top: 0; */
-/*              margin-bottom: 0; */
-/*              font-size: 1.1em; */
-/*              line-height: 1.6; */
-/*              vertical-align: baseline; */
-/*              position: relative; */
-/*              max-width: 40%; } */
-
-/* figure.fullwidth figcaption { margin-right: 24%; } */
-
-/* .fullwidth { */
-/*     max-width: 90%; */
-/*     clear:both; */
-/* } */
-
-/* input.margin-toggle { display: none; } */
-
-/* label.sidenote-number { display: inline; } */
-
-/* label.margin-toggle:not(.sidenote-number) { display: none; } */
-
-/* #disqus_thread { width: 58%; } */
-
-/* #disqus_thread a { color: #333; } /\* the Disqus "Comments" underline *\/ */
-
-/* @media (max-width: 1000px) { */
-/*     main { */
-/*         max-width: 640px; */
-/*         padding-left: 0; */
-/*         margin-left: auto; */
-/*     } */
-
-/*     p, footer { width: 100% } */
-
-/*     figure, figcaption, figure.fullwidth figcaption { */
-/*         margin-right: 0%; */
-/*         max-width: 100%; */
-/*     } */
-
-/*     pre code { max-width: 640px; } */
-
-/*     blockquote { */
-/*         margin-left: 1.5em; */
-/*         margin-right: 0em; */
-/*     } */
-
-/*     blockquote p, blockquote footer { width: 100%; } */
-
-/*     label.margin-toggle:not(.sidenote-number) { display: inline; } */
-
-/*     .sidenote, .marginnote { display: none; } */
-/*     .margin-toggle:checked + .sidenote, .margin-toggle:checked + .marginnote { */
-/*         display: block; */
-/*         float: left; */
-/*         left: 1em; */
-/*         clear: both; */
-/*         width: 95%; */
-/*         margin: 1em 2.5%; */
-/*         vertical-align: baseline; */
-/*         position: relative; */
-/*     } */
-/*     label { cursor: pointer; } */
-/*     div.table-wrapper, table { width: 85%; } */
-/*     #disqus_thread { width: 100%; } */
-/*     img { max-width: 100% } */
-/*     article ol li p, article ul li p{ width: 100%; } */
-/* } */
-
-/* @media (max-width: 660px) { */
-/*     img, pre code { */
-/*         margin-left: -5%; */
-/*         max-width: none; */
-/*         width: 110%; */
-/*     } */
-/* } */

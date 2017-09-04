@@ -14,7 +14,7 @@
    (hp/include-css "/vendor/highlight.css")
    (hp/include-css "/stylesheets/site.css")
    (hp/include-js "/vendor/highlight.js")
-   [:script "hljs.initHighlightingOnLoad();"]
+   ;; [:script "hljs.initHighlightingOnLoad();"]
    [:title (if title (str title " | Sooheon") "(dissoc mind :thoughts)")]])
 
 (defn disqus [post]
@@ -37,10 +37,16 @@ s.setAttribute('data-timestamp', +new Date());
    [:noscript "Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\">comments powered by Disqus.</a>"]])
 
 (def header [:header.mono
-             [:div.title [:a {:href "/"} "****"]]
-             [:div.subtitle "(dissoc mind :thoughts)"]])
+             [:div#title [:a {:href "/"}
+                          [:span#letter "*"]
+                          [:span#letter "*"]
+                          [:span#letter "*"]
+                          [:span#letter "*"]]]
+             [:div "(dissoc mind :thoughts)"]])
 
 (def footer [:footer.mono
-             [:a {:href "/about.html"} "About"] " * "
-             [:a {:href "/feed.rss"} "Subscribe"] " * "
-             [:a {:href "mailto:tngjs0@gmail.com"} "Talk to Me"]])
+             [:a {:href "/about.html"} "About"]
+             " * "
+             [:a {:href "/feed.rss"} "Subscribe"]
+             " * "
+             [:a {:href "mailto:tngjs0@gmail.com"} "Email"]])
