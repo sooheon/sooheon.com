@@ -19,10 +19,7 @@
          '[io.perun.meta :as pm]
          '[site.util :as util]
          '[clojure.string :as string]
-         '[confetti.boot-confetti :refer [sync-bucket]]
-         '[boot.lein])
-
-(boot.lein/generate)
+         '[confetti.boot-confetti :refer :all])
 
 (task-options!
  pom {:project project
