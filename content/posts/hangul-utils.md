@@ -63,7 +63,7 @@ delineate syllables. If you are going from a flat string of morphemes like
 backtracking for context.
 
 I took a look at how it was done in the Python library, under the function
-[`join_jamos`](https://github.com/kaniblu/hangul-utils/blob/master/hangul_utils/__init__.py#L144),
+[`join_jamos`](https://github.com/kaniblu/hangul-utils/blob/2c2bf5cffc94e88aad1ceec4bbc726ba00046a52/hangul_utils/jamo.py#L144),
 but found the logic difficult to follow and translate to Clojure. After some
 thought, the following is my stab at a more idiomatic, Clojurian approach.
 
