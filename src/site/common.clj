@@ -11,9 +11,9 @@
    [:meta {:itemprop "author" :name "author" :content "Sooheon Kim (sooheon.k@gmail.com)"}]
    [:link {:rel "shortcut icon" :href "/images/favicon.ico"}]
    (hp/include-css "/vendor/basscss@8.0.1.min.css")
-   (hp/include-css "/vendor/highlight.css")
+   ;; (hp/include-css "/vendor/highlight.css")
    (hp/include-css "/stylesheets/site.css")
-   (hp/include-js "/vendor/highlight.js")
+   ;; (hp/include-js "/vendor/highlight.js")
    ;; [:script "hljs.initHighlightingOnLoad();"]
    [:title (if title (str title " | Sooheon") "(dissoc mind :thoughts)")]])
 
@@ -27,9 +27,9 @@
 
 (def footer [:footer.mono
              [:a {:href "/about.html"} "About"]
-             " * "
+             " / "
              [:a {:href "/feed.rss"} "RSS Feed"]
-             " * "
+             " / "
              [:a {:href "mailto:sooheon.k@gmail.com"} "Email"]])
 
 (defn disqus [post]
