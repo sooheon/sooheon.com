@@ -66,10 +66,11 @@
 (defn year-overview [{:keys [entries]}]
   (layout
    [:div
-    [:h2 (str "Year " (-> (first entries)
+    [:h2 (str "In " (-> (first entries)
                           :permalink
                           (string/split #"/")
-                          second))]
+                          second)
+              ", I wrote about...")]
     [:ul
      (doall (map (fn [{:keys [draft title permalink date-published] :as entry}]
                    [:li [:a {:href permalink} title]])

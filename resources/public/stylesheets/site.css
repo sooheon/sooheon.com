@@ -12,13 +12,11 @@ html {
 }
 
 body {
-    font-family: georgia;
     position: relative;
     margin: 0 auto;
     min-height: 100%;
     padding-bottom: 6rem;
-    color: #222;
-    font-size: 1.06em;
+    color: #333;
     background: #fefefe;
 }
 
@@ -29,14 +27,14 @@ body {
 header {
     width: 100%
     max-width: 1200px;
-    background-color: #222;
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 0.5em;
 }
 
 #title {
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 #title a, footer a {
@@ -59,7 +57,7 @@ footer {
     width: 100%;
     margin: 0;
     text-align: center;
-    background-color: #222;
+    background-color: #333;
     color: white;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
@@ -71,36 +69,36 @@ footer {
 
 .mono {
     font-family: Courier New;
-    font-size: .9em;
+    font-size: 0.9em;
 }
 
 .article-title {
-    font-family: Helvetica Neue, Helvetica, sans-serif;
     margin-top: 1em;
     margin-bottom: 1em;
     font-size: 2em;
-    font-weight: 300;
+    font-family: sans-serif;
+    font-weight: bold;
 }
 
 h1,h2,h3,h4,h5 {
-    font-family: Helvetica Neue, Helvetica, sans-serif;
-    font-weight: 300;
     line-height: 1.2;
     margin-top: 1.5em;
     margin-bottom: 1em;
+    font-family: sans-serif;
 }
 
 article {
     line-height: 1.4;
     padding: 1.5em;
+    font-family: georgia;
 }
 
 a {
-    color: #116fff;
+    color: #006fff;
 }
 
 a:hover {
-    background-color: #116fff;
+    background-color: #006fff;
     color: white;
     text-decoration: none;
 }
