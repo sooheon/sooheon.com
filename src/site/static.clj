@@ -16,5 +16,4 @@
      ;; blog. Enjoy, and don't hesitate to hit me up by email if there's anything
      ;; at all you want to discuss."]
      [:p "I enjoy coding Clojure, yak-shaving with Emacs, some armchair
-    philosophy, and generally looking for reasonable beliefs to hold about a
-    complex world."]]]))
+    philosophy, and generally looking for reasonable beliefs to hold."]]]))

@@ -38,7 +38,9 @@
   (layout
    [:article
     [:p "Welcome to " [:code "(dissoc mind :thoughts)"]
-     ", a blog by me, Sooheon Kim."]
+     ", a blog by me, Sooheon Kim. I wish for this to be a kind of public
+     pensieve, to hold the few ideas of mine substantial enough not to
+     disintegrate immediately on contact with the air and sun."]
     [:h1 "Posts"]
     [:ul
      (doall (map (fn [{:keys [draft title permalink date-published] :as entry}]
