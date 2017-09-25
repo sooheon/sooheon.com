@@ -25,7 +25,7 @@
                           [:span#letter "*"]]]
              [:div "(dissoc mind :thoughts)"]])
 
-(def footer [:footer.content
+(def footer [:footer.mono
              [:a {:href "/about.html"} "About"]
              " / "
              [:a {:href "/feed.rss"} "RSS Feed"]
