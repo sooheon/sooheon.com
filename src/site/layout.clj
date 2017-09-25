@@ -31,14 +31,15 @@
      [:div.clearfix content]]
     common/footer]))
 
-(defn welcome []
-  [:p "Welcome to " [:code "(dissoc mind :thoughts)"] ", a blog by Sooheon Kim."])
+(def welcome
+  [:div [:p "Welcome to " [:code "(dissoc mind :thoughts)"]
+         ", a blog by Sooheon Kim. Here, you will find thoughts on Clojure, Emacs,
+programming, and a dash of armchair philosophy."]])
 
 (defn index [{:keys [entries]}]
   (layout
    [:article
-    [:p "Welcome to " [:code "(dissoc mind :thoughts)"]
-     ", a blog by me, Sooheon Kim."]
+    welcome
     [:h1 "Posts"]
     [:ul
      (doall (map (fn [{:keys [draft title permalink date-published] :as entry}]
